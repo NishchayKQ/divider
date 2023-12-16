@@ -75,8 +75,8 @@ for ara in toPay:
             while temp > 0:
                 if (toPay[i][0] > 0) and (abs(toPay[i][0]) <= temp):
                     temp = temp - toPay[i][0]
-                    print_output(f"{ara[1]} receives INR {
-                        toPay[i][0]} by {toPay[i][1]}")
+                    print_output(
+                        f"{ara[1]} receives INR {toPay[i][0]} by {toPay[i][1]}")
                     toPay[i] = [0, 0]
                 i = i + 1
         except IndexError:
@@ -84,13 +84,13 @@ for ara in toPay:
             while temp > 0:
                 if (toPay[i][0] > 0) and (abs(toPay[i][0]) <= temp):
                     temp = temp - toPay[i][0]
-                    print_output(f"{ara[1]} receives INR {
-                        toPay[i][0]} by {toPay[i][1]}")
+                    print_output(
+                        f"{ara[1]} receives INR {toPay[i][0]} by {toPay[i][1]}")
                     toPay[i] = [0, 0]
 
                 elif toPay[i][0] > 0:
-                    print_output(f"{ara[1]} receives INR {
-                                 temp} by {toPay[i][1]}")
+                    print_output(
+                        f"{ara[1]} receives INR {temp} by {toPay[i][1]}")
                     toPay[i][0] = toPay[i][0] - temp
                     temp = 0
 
