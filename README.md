@@ -4,7 +4,7 @@ It takes in number of people, their name, amount each paid.
 # This program then calculates
 ## Transactions to settle Dues
 provides instructions on how each person can pay or receive money from others to settle their dues with minimum number of transactions.
-such that everyone pays equally
+such that everyone pays equal amount
 ## per head cost
 ## trip total
 
