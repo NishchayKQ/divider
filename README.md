@@ -7,3 +7,8 @@ provides instructions on how each person can pay or receive money from others to
 such that everyone pays equally
 ## per head cost
 ## trip total
+
+# Usage
+paste on terminal , note: [python 3](https://www.python.org/) is needed\
+`python div.py`
+
