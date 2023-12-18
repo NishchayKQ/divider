@@ -11,4 +11,6 @@ such that everyone pays equal amount
 # Usage
 paste on terminal , note: [python 3](https://www.python.org/) is needed\
 `python div.py`
+# Sample Output
+![demo_img](https://github.com/NishchayKQ/divider/assets/108711354/50d27ccf-62e6-4871-a5ad-e26801aae378)
 
