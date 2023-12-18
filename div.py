@@ -26,21 +26,21 @@ def print_note(text: str) -> None:
     print(plsNote_color+text+default_color)
 
 
-peeps = int(input_colored("How many people are there? : "))
+peeps = int(input_colored("\nHow many people are there? : "))
 
 total = Fraction("0")
 listOfPeeps = []
 totalDict = {}
+
+print_note("\nNote: Just enter all amounts paid by each person.\n"
+           "The program will keep adding them up until you\n"
+           "pass a 'blank enter'\n")
 
 for ara in range(peeps):
     person = input_colored(f"Enter the name of person {ara+1}: ")
     person = next(color_iterator)+person+default_color
     listOfPeeps.append(person)
     print_output("Now enter the expenses paid by " + person)
-    if (ara == 0):
-        print_note("Note: Just enter all amounts paid by each person.\n"
-                   "The program will keep adding them up until you\n"
-                   "pass a 'blank enter'\n")
     muns = Fraction("0")
     while True:
         try:
@@ -63,7 +63,7 @@ toPay = []
 
 print_note("\nbelow are the total amount each of you should\n"
            "pay / recieve. You can use this to verify that\n"
-           "all dues have been cleared!")
+           "all dues have been cleared!\n")
 
 for ara in listOfPeeps:
     temp = Fraction(perPersonMuns - totalDict[ara])
@@ -75,12 +75,13 @@ for ara in listOfPeeps:
         print_output(f"\t{ara} will not have to pay / receive anything!")
     toPay.append([temp, ara])
 
+print()
 
 toPay.sort()
 i = 0  # iterator that needs to be set
 j = 0  # iterator indicating loop position
 print_note("below are the exact transactions your group has to perform\n"
-           "so that there are no dues left!")
+           "so that there are no dues left!\n")
 for ara in toPay:
     if ara[0] < 0:
         temp = Fraction(abs(ara[0]))
@@ -120,3 +121,4 @@ for ara in toPay:
                 i = i + 1
 
     j = j + 1
+print()
