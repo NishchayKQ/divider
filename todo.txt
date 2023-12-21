@@ -1,1 +1,5 @@
-x add support for decimal values
+x = done
+del = rejected
+
+x 1) add support for decimal values
+2) do input validation...dont error out on wrong input
