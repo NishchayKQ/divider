@@ -5,3 +5,5 @@ x 1) add support for decimal values
 2) do input validation...dont error out on wrong input
 3) a "weight" setting like make someone's due be 1/2 the avg due and so on...
     default weight 1x
+4) verify the transactions in addition to this 
+    "You can use this to verify that all dues have been cleared!\n"
