@@ -1,12 +1,13 @@
 from itertools import cycle
 from fractions import Fraction
+from sys import version_info
 
 default_color = "\033[0m"
 input_color = "\033[38;2;52;101;164m"
 output_color = "\033[38;2;85;85;85m"
 plsNote_color = "\033[38;2;245;121;0m"
 color_iterator = cycle(["\033[38;2;170;0;0m",
-                       "\033[38;2;0;170;0m",
+                        "\033[38;2;0;170;0m",
                         "\033[38;2;170;85;0m",
                         "\033[38;2;0;0;170m",
                         "\033[38;2;170;0;170m",
@@ -15,15 +16,22 @@ color_iterator = cycle(["\033[38;2;170;0;0m",
 
 
 def input_colored(text: str) -> str:
-    return input(input_color+text+default_color)
+    return input(input_color + text + default_color)
 
 
 def print_output(text: str) -> None:
-    print(output_color+text+default_color)
+    print(output_color + text + default_color)
 
 
 def print_note(text: str) -> None:
-    print(plsNote_color+text+default_color)
+    print(plsNote_color + text + default_color)
+
+
+def format_version_safe(txt: Fraction, format_str: str) -> str:
+    if version_info.major >= 3 and version_info.minor >= 12:
+        return f"{format(txt, format_str)}"
+    else:
+        return f"{format(float(txt), format_str)}"
 
 
 peeps = int(input_colored("\nHow many people are there? : "))
@@ -37,8 +45,8 @@ print_note("\nNote: Just enter all amounts paid by each person.\n"
            "pass a 'blank enter'\n")
 
 for ara in range(peeps):
-    person = input_colored(f"Enter the name of person {ara+1}: ")
-    person = next(color_iterator)+person+default_color
+    person = input_colored(f"Enter the name of person {ara + 1}: ")
+    person = next(color_iterator) + person + default_color
     listOfPeeps.append(person)
     print_output("Now enter the expenses paid by " + person)
     muns = Fraction("0")
@@ -57,8 +65,8 @@ for ara in range(peeps):
     totalDict.update({person: muns})
 
 perPersonMuns = Fraction(total / peeps)
-print_output(f"total is {format(total, ',.2f')}\n"
-             f"per head its {format(perPersonMuns, ',.2f')}")
+print_output(f"total is {format_version_safe(total, ',.2f')}\n"
+             f"per head its {format_version_safe(perPersonMuns, ',.2f')}")
 toPay = []
 
 print_note("\nbelow are the total amount each of you should\n"
@@ -68,9 +76,9 @@ print_note("\nbelow are the total amount each of you should\n"
 for ara in listOfPeeps:
     temp = Fraction(perPersonMuns - totalDict[ara])
     if temp > 0:
-        print_output(f"\t{ara} has to pay {format(temp, ',.2f')}")
+        print_output(f"\t{ara} has to pay {format_version_safe(temp, ',.2f')}")
     elif temp < 0:
-        print_output(f"\t{ara} has to receive {format(abs(temp), ',.2f')}")
+        print_output(f"\t{ara} has to receive {format_version_safe(abs(temp), ',.2f')}")
     else:
         print_output(f"\t{ara} will not have to pay / receive anything!")
     toPay.append([temp, ara])
@@ -92,7 +100,7 @@ for ara in toPay:
                     temp = temp - toPay[i][0]
 
                     print_output(f"\t{toPay[i][1]} pays INR "
-                                 f"{format(toPay[i][0], ',.2f')} to "
+                                 f"{format_version_safe(toPay[i][0], ',.2f')} to "
                                  f"{ara[1]}")
 
                     toPay[i] = [0, 0]
@@ -104,7 +112,7 @@ for ara in toPay:
                     temp = temp - toPay[i][0]
 
                     print_output(f"\t{toPay[i][1]} pays INR "
-                                 f"{format(toPay[i][0], ',.2f')} to "
+                                 f"{format_version_safe(toPay[i][0], ',.2f')} to "
                                  f"{ara[1]}")
 
                     toPay[i] = [0, 0]
@@ -112,7 +120,7 @@ for ara in toPay:
                 elif toPay[i][0] > 0:
 
                     print_output(f"\t{toPay[i][1]} pays INR "
-                                 f"{format(temp, ',.2f')} to "
+                                 f"{format_version_safe(temp, ',.2f')} to "
                                  f"{ara[1]}")
 
                     toPay[i][0] = toPay[i][0] - temp
